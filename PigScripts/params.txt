@@ -1,0 +1,5 @@
+fileA=/data/a.txt
+fileB=/data/b.txt
+inner=/inner1
+left=/left1
+cgrp=/cgrp1
