@@ -1,0 +1,216 @@
+---------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------
+sam@ubuntu:~$ hadoop fs -cat /data/a.txt
+1	A
+2	B
+4	D
+5	E
+7	G
+sam@ubuntu:~$ hadoop fs -ls /user/hive/warehouse/
+Found 1 items
+drwxr-xr-x   - sam supergroup          0 2015-07-16 00:48 /user/hive/warehouse/tbl1
+sam@ubuntu:~$ hadoop fs -ls /user/hive/warehouse/tbl1
+sam@ubuntu:~$ hadoop fs -ls /data
+Found 6 items
+-rw-r--r--   1 sam supergroup         16 2015-07-15 09:23 /data/b.txt
+-rw-r--r--   1 sam supergroup         44 2015-07-15 10:27 /data/cities.txt
+-rw-r--r--   1 sam supergroup        524 2015-07-10 23:53 /data/ipl.txt
+-rw-r--r--   1 sam supergroup   16869863 2015-07-11 01:44 /data/ipl1.txt
+-rw-r--r--   1 sam supergroup        244 2015-07-11 00:53 /data/nameAgeScore.txt
+-rw-r--r--   1 sam supergroup        244 2015-07-11 02:21 /data/nameAgeScore1.txt
+sam@ubuntu:~$ hadoop fs -ls /user/hive/warehouse/tbl1
+Found 2 items
+-rwxr-xr-x   1 sam supergroup         20 2015-07-15 09:23 /user/hive/warehouse/tbl1/a.txt
+-rwxr-xr-x   1 sam supergroup         20 2015-07-16 00:52 /user/hive/warehouse/tbl1/a_copy_1.txt
+sam@ubuntu:~$ hadoop fs -ls /user/hive/warehouse/tbl1
+ls: `/user/hive/warehouse/tbl1': No such file or directory
+sam@ubuntu:~$ hadoop fs -ls /user/hive/warehouse/tbl1
+sam@ubuntu:~$ hadoop fs -ls /user/hive/warehouse/tbl1
+Found 1 items
+-rwxr-xr-x   1 sam supergroup         20 2015-07-16 00:56 /user/hive/warehouse/tbl1/a.txt
+sam@ubuntu:~$ hadoop fs -ls /user/hive/warehouse/tbl1
+Found 1 items
+-rwxr-xr-x   1 sam supergroup         20 2015-07-16 00:56 /user/hive/warehouse/tbl1/a.txt
+sam@ubuntu:~$ hadoop fs -ls /user/hive/warehouse/nyse
+Found 1 items
+-rwxr-xr-x   1 sam supergroup      50600 2015-07-16 01:20 /user/hive/warehouse/nyse/divs.csv
+sam@ubuntu:~$ hadoop fs -ls /user/hive/warehouse/nyse_part
+sam@ubuntu:~$ hadoop fs -ls /user/hive/warehouse/nyse_part
+Found 6 items
+drwxr-xr-x   - sam supergroup          0 2015-07-16 01:26 /user/hive/warehouse/nyse_part/year=2006
+drwxr-xr-x   - sam supergroup          0 2015-07-16 01:26 /user/hive/warehouse/nyse_part/year=2007
+drwxr-xr-x   - sam supergroup          0 2015-07-16 01:26 /user/hive/warehouse/nyse_part/year=2008
+drwxr-xr-x   - sam supergroup          0 2015-07-16 01:26 /user/hive/warehouse/nyse_part/year=2009
+drwxr-xr-x   - sam supergroup          0 2015-07-16 01:26 /user/hive/warehouse/nyse_part/year=2010
+drwxr-xr-x   - sam supergroup          0 2015-07-16 01:26 /user/hive/warehouse/nyse_part/year=2011
+sam@ubuntu:~$ hadoop fs -cat /user/hive/warehouse/nyse_part/year=2010/00000-0
+cat: `/user/hive/warehouse/nyse_part/year=2010/00000-0': No such file or directory
+sam@ubuntu:~$ hadoop fs -ls /user/hive/warehouse/nyse_part/year=2010/
+Found 1 items
+-rwxr-xr-x   1 sam supergroup      14256 2015-07-16 01:26 /user/hive/warehouse/nyse_part/year=2010/000000_0
+sam@ubuntu:~$ hadoop fs -cat /user/hive/warehouse/nyse_part/year=2010/000000_0
+NYSEAIT  2010-08-120.13
+JGFJGOL  2010-08-120.11
+NYSEAIT  2010-11-120.15
+HGCHJYT  2010-08-120.15
+
+sam@ubuntu:~$ hadoop fs -ls /data/
+Found 6 items
+-rw-r--r--   1 sam supergroup         16 2015-07-15 09:23 /data/b.txt
+-rw-r--r--   1 sam supergroup         44 2015-07-15 10:27 /data/cities.txt
+-rw-r--r--   1 sam supergroup        524 2015-07-10 23:53 /data/ipl.txt
+-rw-r--r--   1 sam supergroup   16869863 2015-07-11 01:44 /data/ipl1.txt
+-rw-r--r--   1 sam supergroup        244 2015-07-11 00:53 /data/nameAgeScore.txt
+-rw-r--r--   1 sam supergroup        244 2015-07-11 02:21 /data/nameAgeScore1.txt
+sam@ubuntu:~$ hadoop fs -put 'data/a.txt' /data
+sam@ubuntu:~$ hadoop fs -put 'data/a1.txt' /data
+sam@ubuntu:~$ hadoop fs -ls /data
+Found 8 items
+-rw-r--r--   1 sam supergroup         20 2015-07-16 01:53 /data/a.txt
+-rw-r--r--   1 sam supergroup         20 2015-07-16 01:53 /data/a1.txt
+-rw-r--r--   1 sam supergroup         16 2015-07-15 09:23 /data/b.txt
+-rw-r--r--   1 sam supergroup         44 2015-07-15 10:27 /data/cities.txt
+-rw-r--r--   1 sam supergroup        524 2015-07-10 23:53 /data/ipl.txt
+-rw-r--r--   1 sam supergroup   16869863 2015-07-11 01:44 /data/ipl1.txt
+-rw-r--r--   1 sam supergroup        244 2015-07-11 00:53 /data/nameAgeScore.txt
+-rw-r--r--   1 sam supergroup        244 2015-07-11 02:21 /data/nameAgeScore1.txt
+sam@ubuntu:~$ hadoop fs -ls /user/hive/warehouse/
+Found 6 items
+drwxr-xr-x   - sam supergroup          0 2015-07-16 01:58 /user/hive/warehouse/a
+drwxr-xr-x   - sam supergroup          0 2015-07-16 01:56 /user/hive/warehouse/b
+drwxr-xr-x   - sam supergroup          0 2015-07-16 02:11 /user/hive/warehouse/default__a_index_table_a__
+drwxr-xr-x   - sam supergroup          0 2015-07-16 01:20 /user/hive/warehouse/nyse
+drwxr-xr-x   - sam supergroup          0 2015-07-16 01:26 /user/hive/warehouse/nyse_part
+drwxr-xr-x   - sam supergroup          0 2015-07-16 00:56 /user/hive/warehouse/tbl1
+sam@ubuntu:~$ hadoop fs -ls /user/hive/warehouse/default__a_index_table_a__
+sam@ubuntu:~$ hadoop fs -ls /user/hive/warehouse/default__a_index_table_a__
+Found 2 items
+drwxr-xr-x   - sam supergroup          0 2015-07-16 02:13 /user/hive/warehouse/default__a_index_table_a__/.hive-staging_hive_2015-07-16_02-13-05_699_73364533348626176-1
+-rwxr-xr-x   1 sam supergroup        382 2015-07-16 02:13 /user/hive/warehouse/default__a_index_table_a__/000000_0
+sam@ubuntu:~$ hadoop fs -cat /user/hive/warehouse/default__a_index_table_a__/000000_0
+1hdfs://localhost:9000/user/hive/warehouse/a/a1.txt0124858993459210
+2hdfs://localhost:9000/user/hive/warehouse/a/a1.txt4124858993459210
+4hdfs://localhost:9000/user/hive/warehouse/a/a1.txt8124858993459210
+5hdfs://localhost:9000/user/hive/warehouse/a/a1.txt12124858993459210
+7hdfs://localhost:9000/user/hive/warehouse/a/a1.txt16124858993459210
+sam@ubuntu:~$ hadoop fs -ls /
+Found 17 items
+drwxr-xr-x   - sam supergroup          0 2015-07-15 09:56 /cgrp
+drwxr-xr-x   - sam supergroup          0 2015-07-15 10:14 /cgrp1
+drwxr-xr-x   - sam supergroup          0 2015-07-16 01:58 /data
+drwxr-xr-x   - sam supergroup          0 2015-07-15 10:15 /inner1
+drwxr-xr-x   - sam supergroup          0 2015-07-15 09:57 /innerJ
+drwxr-xr-x   - sam supergroup          0 2015-07-15 09:17 /ipl
+drwxr-xr-x   - sam supergroup          0 2015-07-15 10:15 /left1
+drwxr-xr-x   - sam supergroup          0 2015-07-15 09:57 /leftJ
+drwxr-xr-x   - sam supergroup          0 2015-07-11 00:59 /nas
+drwxr-xr-x   - sam supergroup          0 2015-07-11 01:26 /nasCP
+drwxr-xr-x   - sam supergroup          0 2015-07-11 02:18 /nasCP1
+drwxr-xr-x   - sam supergroup          0 2015-07-11 02:22 /nasCP2
+drwxr-xr-x   - sam supergroup          0 2015-07-15 09:00 /sortedNAS
+drwx------   - sam supergroup          0 2015-07-16 00:46 /tmp
+drwxr-xr-x   - sam supergroup          0 2015-07-16 00:48 /user
+drwxr-xr-x   - sam supergroup          0 2015-07-11 01:45 /wordcountCombiner
+drwxr-xr-x   - sam supergroup          0 2015-07-11 00:37 /wordcountT
+sam@ubuntu:~$ hadoop fs -mkdir /a
+sam@ubuntu:~$ hadoop fs -ls /
+Found 18 items
+drwxr-xr-x   - sam supergroup          0 2015-07-16 02:26 /a
+drwxr-xr-x   - sam supergroup          0 2015-07-15 09:56 /cgrp
+drwxr-xr-x   - sam supergroup          0 2015-07-15 10:14 /cgrp1
+drwxr-xr-x   - sam supergroup          0 2015-07-16 01:58 /data
+drwxr-xr-x   - sam supergroup          0 2015-07-15 10:15 /inner1
+drwxr-xr-x   - sam supergroup          0 2015-07-15 09:57 /innerJ
+drwxr-xr-x   - sam supergroup          0 2015-07-15 09:17 /ipl
+drwxr-xr-x   - sam supergroup          0 2015-07-15 10:15 /left1
+drwxr-xr-x   - sam supergroup          0 2015-07-15 09:57 /leftJ
+drwxr-xr-x   - sam supergroup          0 2015-07-11 00:59 /nas
+drwxr-xr-x   - sam supergroup          0 2015-07-11 01:26 /nasCP
+drwxr-xr-x   - sam supergroup          0 2015-07-11 02:18 /nasCP1
+drwxr-xr-x   - sam supergroup          0 2015-07-11 02:22 /nasCP2
+drwxr-xr-x   - sam supergroup          0 2015-07-15 09:00 /sortedNAS
+drwx------   - sam supergroup          0 2015-07-16 00:46 /tmp
+drwxr-xr-x   - sam supergroup          0 2015-07-16 00:48 /user
+drwxr-xr-x   - sam supergroup          0 2015-07-11 01:45 /wordcountCombiner
+drwxr-xr-x   - sam supergroup          0 2015-07-11 00:37 /wordcountT
+sam@ubuntu:~$ hadoop fs -ls /a
+sam@ubuntu:~$ hadoop fs -put /home/sam/data/a1.txt /a
+sam@ubuntu:~$ hadoop fs -ls /a
+Found 1 items
+-rw-r--r--   1 sam supergroup         20 2015-07-16 02:27 /a/a1.txt
+sam@ubuntu:~$ hadoop fs -cat /a/a1.txt
+1,A
+2,B
+4,D
+5,E
+7,G
+sam@ubuntu:~$ hadoop fs -ls /user/hive/warehouse/
+Found 7 items
+drwxr-xr-x   - sam supergroup          0 2015-07-16 01:58 /user/hive/warehouse/a
+drwxr-xr-x   - sam supergroup          0 2015-07-16 01:56 /user/hive/warehouse/b
+drwxr-xr-x   - sam supergroup          0 2015-07-16 02:20 /user/hive/warehouse/default__a_index_table_a__
+drwxr-xr-x   - sam supergroup          0 2015-07-16 02:20 /user/hive/warehouse/default__b_index_table_b__
+drwxr-xr-x   - sam supergroup          0 2015-07-16 01:20 /user/hive/warehouse/nyse
+drwxr-xr-x   - sam supergroup          0 2015-07-16 01:26 /user/hive/warehouse/nyse_part
+drwxr-xr-x   - sam supergroup          0 2015-07-16 00:56 /user/hive/warehouse/tbl1
+sam@ubuntu:~$ hadoop fs -ls /a
+Found 1 items
+-rw-r--r--   1 sam supergroup         20 2015-07-16 02:27 /a/a1.txt
+sam@ubuntu:~$ hadoop fs -ls /user/hive/warehouse/nyse
+Found 1 items
+-rwxr-xr-x   1 sam supergroup      50600 2015-07-16 01:20 /user/hive/warehouse/nyse/divs.csv
+sam@ubuntu:~$ hadoop fs -ls /user/hive/warehouse/nyse_seq
+sam@ubuntu:~$ hadoop fs -ls /user/hive/warehouse/nyse_seq
+Found 1 items
+-rwxr-xr-x   1 sam supergroup      79695 2015-07-16 02:33 /user/hive/warehouse/nyse_seq/000000_0
+sam@ubuntu:~$ hadoop fs -cat /user/hive/warehouse/nyse_seq/000000_0
+SEQ"org.apache.hadoop.io.BytesWritableorg.apache.hadoop.io.Text�J����i4a�P4&NYSEAIT  2009-11-120.15NYSEAIT  2009-08-120.15NYSEAIT  2009-11-120.1NYSEAIT  2009-08-120.17NYSEJIT  2009-11-120.13NYSEAIT  2009-08-120.15MHHEKIT  2008-11-120.15NYSEATT  2009-08-120.11NYSEHTT  2009-11-120.16NYSEAIT  2010-08-120.13NYSESUP  2009-11-120.15NYSEAIT  2007-08-120.11KJBHABO  2011-11-120.15NYSEAIT  2006-08-120.15NYSEAIT  2008-11-120.15
+
+
+sam@ubuntu:~$ hadoop fs -cat /user/hive/warehouse/nyse_rc/000000_0
+RCFhive.io.rcfile.column.number4ȭ.yſ
+����Ժ:n�//�����������������NYSENYSENYSENYSENYSENYSEMHHENYSENYSENYSENYSENYSEKJBHNYSENYSEJGFJNYSEHGCHJHGJNYSEJGHVNYS
+ENYSENYSENYSENYSENYSENYSENYSEMHHENYSENYSENYSENYSENYSEKJBHNYSENYSEJGFJNYSEHGCHJHGJNYSEJGHVNYSENYSENYSENYSENYSENYSENYS
+ENYSEMHHENYSENYSENYSENYSENYSEKJBHNYSENYSEJGFJNYSEHGCHJHGJNYSEJGHVNYSENYSENYSENYSENYSENYSENYSENYSEMHHENYSENYSENYSENYS
+ENYSEKJBHNYSENYSEJGFJNYSEHGCHJHGJNYSEJGHVNYSENYSENYSENYSENYSENYSENYSENYSEMHHENYSENYSENYSENYSENYSEKJBHNYSENYSEJGFJNYS
+EHGCHJHGJNYSEJGHVNYSENYSENYSENYSENYSE
+����s������<s�M��M���������s������<s�M��M���������s������<s�M��M���������s������<s�M��M���������s������<s�M��M���������s������<s�M��M���>��>��=���>.{>�>��>��=�G�>#
+>�>��=�G�>��>��>��=�G�>��>��>��>��=�G�>��=�>��>��=���>.{>�>��>��=�G�>#
+>�>��=�G�>��>��>��=�G�>��>��>��>��=�G�>��=�>��>��=���>.{>�>��>��=�G�>#
+
+
+
+sam@ubuntu:~$ hadoop fs -cat /user/hive/warehouse/nyse_parq/000000_0
+PAR1ppLNYSEMHHEKJBHJGFJHGCHJHGJJGHV�
+                                                    �
+                                                      ,�NYSEHGCH�# ``a�
+          ����0�0@@���-          ``a�
+�ڗAD��Z���(Xk_>Ak�ˇ�``�}�A
+                                   ��/� ������CQ0�־� 
+�ڗAD��Z��!88L��>���={.>�>�G�=
+�#>�=�
+          ,�{.>���=�@4��@���v a @ 
+` ��@�@4��@���v a @                            D��h;�0
+` ��@�@4��@���v a @ D��h;�0
+H                D��h;�0
+                 hive_schema
+                             %xchange%
+                                         %symbol%%stk_date%
+                                                                 %divs�L
+NYSEHGCH&                                                                   5xchange�
+&�,<{.>��
+
+
+sam@ubuntu:~$ hadoop fs -ls /user/hive/warehouse/nyse_seq
+Found 1 items
+-rwxr-xr-x   1 sam supergroup      79695 2015-07-16 02:33 /user/hive/warehouse/nyse_seq/000000_0
+sam@ubuntu:~$ hadoop fs -ls /user/hive/warehouse/nyse_rc
+Found 1 items
+-rwxr-xr-x   1 sam supergroup      28451 2015-07-16 02:35 /user/hive/warehouse/nyse_rc/000000_0
+sam@ubuntu:~$ hadoop fs -ls /user/hive/warehouse/nyse_parq
+Found 1 items
+-rwxr-xr-x   1 sam supergroup       4041 2015-07-16 02:37 /user/hive/warehouse/nyse_parq/000000_0
+sam@ubuntu:~$ 
+
+
+
